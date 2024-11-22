@@ -36,5 +36,19 @@ func Middleware(next http.Handler) http.Handler {
 			r.Method,
 			status,
 		).Observe(duration)
+
+		RequestsTotal.WithLabelValues(
+			r.URL.Path,
+			r.Method,
+			status,
+		).Inc()
+
+		if wrapped.statusCode >= 400 {
+			ErrorsTotal.WithLabelValues(
+				r.URL.Path,
+				r.Method,
+				status,
+			).Inc()
+		}
 	})
 }

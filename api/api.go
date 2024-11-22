@@ -88,7 +88,7 @@ func New(enableCORS bool) (*chi.Mux, error) {
 
 	r.Get("/metrics", promhttp.Handler().ServeHTTP)
 
-	r.Get("/*", SPAHandler("public"))
+	// r.Get("/*", SPAHandler("public"))
 
 	return r, nil
 }

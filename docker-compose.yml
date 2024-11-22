@@ -11,7 +11,7 @@ services:
       LOG_TEXTLOGGING: "true"
       PORT: 8080
       DB_DSN: postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
-      # DB_ADDR: postgres:5432
+      DB_ADDR: postgres:5432
       #DB_USER: postgres
       #DB_PASSWORD: postgres
       #DB_DATABASE: postgres
@@ -36,6 +36,7 @@ services:
       - postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
+
   prometheus:
     image: prom/prometheus:latest
     ports:
