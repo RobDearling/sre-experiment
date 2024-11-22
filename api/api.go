@@ -8,6 +8,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/robdearling/sre-experiment/metrics"
+
 	"github.com/dhax/go-base/api/admin"
 	"github.com/dhax/go-base/api/app"
 	"github.com/dhax/go-base/auth/jwt"
@@ -61,6 +64,7 @@ func New(enableCORS bool) (*chi.Mux, error) {
 	r.Use(middleware.RequestID)
 	// r.Use(middleware.RealIP)
 	r.Use(middleware.Timeout(15 * time.Second))
+	r.Use(metrics.Middleware)
 
 	r.Use(logging.NewStructuredLogger(logger))
 	r.Use(render.SetContentType(render.ContentTypeJSON))
@@ -81,6 +85,8 @@ func New(enableCORS bool) (*chi.Mux, error) {
 	r.Get("/ping", func(w http.ResponseWriter, _ *http.Request) {
 		w.Write([]byte("pong"))
 	})
+
+	r.Get("/metrics", promhttp.Handler().ServeHTTP)
 
 	r.Get("/*", SPAHandler("public"))
 
