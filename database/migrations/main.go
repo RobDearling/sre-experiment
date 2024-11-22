@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/dhax/go-base/database"
+	"github.com/robdearling/sre-experiment/database"
 	"github.com/uptrace/bun/migrate"
 )
 

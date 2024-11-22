@@ -6,9 +6,9 @@ import (
 	"errors"
 	"net/url"
 
-	"github.com/dhax/go-base/auth/jwt"
-	"github.com/dhax/go-base/auth/pwdless"
-	"github.com/dhax/go-base/models"
+	"github.com/robdearling/sre-experiment/auth/jwt"
+	"github.com/robdearling/sre-experiment/auth/pwdless"
+	"github.com/robdearling/sre-experiment/models"
 	"github.com/uptrace/bun"
 )
 

@@ -11,17 +11,17 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/robdearling/sre-experiment/metrics"
 
-	"github.com/dhax/go-base/api/admin"
-	"github.com/dhax/go-base/api/app"
-	"github.com/dhax/go-base/auth/jwt"
-	"github.com/dhax/go-base/auth/pwdless"
-	"github.com/dhax/go-base/database"
-	"github.com/dhax/go-base/email"
-	"github.com/dhax/go-base/logging"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 	"github.com/go-chi/render"
+	"github.com/robdearling/sre-experiment/api/admin"
+	"github.com/robdearling/sre-experiment/api/app"
+	"github.com/robdearling/sre-experiment/auth/jwt"
+	"github.com/robdearling/sre-experiment/auth/pwdless"
+	"github.com/robdearling/sre-experiment/database"
+	"github.com/robdearling/sre-experiment/email"
+	"github.com/robdearling/sre-experiment/logging"
 )
 
 // New configures application resources and routes.
@@ -88,7 +88,7 @@ func New(enableCORS bool) (*chi.Mux, error) {
 
 	r.Get("/metrics", promhttp.Handler().ServeHTTP)
 
-	// r.Get("/*", SPAHandler("public"))
+	r.Get("/*", SPAHandler("public"))
 
 	return r, nil
 }

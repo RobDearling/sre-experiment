@@ -8,7 +8,7 @@ import (
 	"github.com/go-ozzo/ozzo-validation/is"
 	"github.com/uptrace/bun"
 
-	"github.com/dhax/go-base/auth/jwt"
+	"github.com/robdearling/sre-experiment/auth/jwt"
 )
 
 // Account represents an authenticated application user

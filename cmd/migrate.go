@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/dhax/go-base/database/migrations"
+	"github.com/robdearling/sre-experiment/database/migrations"
 )
 
 // migrateCmd represents the migrate command

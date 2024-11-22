@@ -9,7 +9,7 @@ import (
 	"github.com/go-chi/jwtauth/v5"
 	"github.com/go-chi/render"
 
-	"github.com/dhax/go-base/logging"
+	"github.com/robdearling/sre-experiment/logging"
 )
 
 type ctxKey int
