@@ -8,11 +8,11 @@ import (
 var (
 	RequestDuration = promauto.NewHistogramVec(
 		prometheus.HistogramOpts{
-			Name: "http_request_duration_seconds",
-			Help: "Request duration in seconds",
+			Name:    "http_request_duration_seconds",
+			Help:    "Request duration in seconds",
 			Buckets: []float64{.005, .01, 0.025, 0.05, .1, .25, .5, 1, 2.5, 5, 10},
 		},
-		[]string[]{"handler", "method", "status"}
+		[]string{"handler", "method", "status"},
 	)
 
 	RequestsTotal = promauto.NewCounterVec(
@@ -20,7 +20,7 @@ var (
 			Name: "http_requests_total",
 			Help: "Total number of HTTP requests",
 		},
-		[]string{"handler", "method", "status"}
+		[]string{"handler", "method", "status"},
 	)
 
 	ErrorsTotal = promauto.NewCounterVec(
@@ -28,7 +28,7 @@ var (
 			Name: "http_errors_total",
 			Help: "Total number of HTTP errors",
 		},
-		[]string{"handler", "method", "status"}
+		[]string{"handler", "method", "status"},
 	)
 
 	ConcurrentRequests = promauto.NewGauge(
